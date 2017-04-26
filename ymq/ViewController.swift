@@ -15,16 +15,15 @@ var r = 0
 var a : Int = 0
 var b : Int = 0
 class ViewController: UIViewController {
+    @IBOutlet weak var score2: UITextField!
 
 
     @IBOutlet weak var a: UITextField!
+    @IBOutlet weak var score1: UITextField!
     @IBOutlet weak var b: UITextField!
-   
+    
     @IBOutlet weak var jieguo: UITextField!
     @IBOutlet weak var jushu: UITextField!
-   
-    @IBOutlet weak var score2: UITextField!
-    @IBOutlet weak var score1: UITextField!
     @IBAction func restart(_ sender: UIButton) {
         z = 0
         x = 0
@@ -34,6 +33,9 @@ class ViewController: UIViewController {
         jushu.text = "第\(i)局"
         
         jieguo.text = ""
+        if(i>=4){
+            jushu.text="结束"
+        }
     }
     @IBAction func jiaa(_ sender: UIButton) {
         x = x + 1
@@ -43,6 +45,7 @@ class ViewController: UIViewController {
         {
             jieguo.text = "此局A选手胜"
             t = t + 1
+            score1.text = "\(t)"
         }
         if t == 2{
             jieguo.text = "A选手胜出"
@@ -71,6 +74,7 @@ class ViewController: UIViewController {
         {
             jieguo.text = "此局B选手胜"
             r = r + 1
+            score2.text="\(r)"
         }
         if r == 2{
            jieguo.text = "B选手胜出"
