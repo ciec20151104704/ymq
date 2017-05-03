@@ -31,16 +31,21 @@ class ViewController: UIViewController {
         b.text = "\(0)"
         i = i+1
         jushu.text = "第\(i)局"
-        
+        faqiu.text = ""
         jieguo.text = ""
         if(i>=4){
             jushu.text="结束"
         }
     }
+ 
+  
+
+
     @IBAction func jiaa(_ sender: UIButton) {
         x = x + 1
         
         a.text = "\(x)"
+        faqiu.text = "A选手发球"
         if x >= 21
         {
             jieguo.text = "此局A选手胜"
@@ -57,19 +62,17 @@ class ViewController: UIViewController {
             t = 0
             r = 0
         }
-        
+
     }
-
-    
-  
-
-
     
     @IBOutlet weak var player2: UIImageView!
+    
+    @IBOutlet weak var faqiu: UITextField!
     
     @IBAction func jiab(_ sender: UIButton) {
         z = z + 1
         b.text = "\(z)"
+         faqiu.text = "B选手发球"
         if z >= 21
         {
             jieguo.text = "此局B选手胜"
@@ -88,7 +91,7 @@ class ViewController: UIViewController {
         }
            }
 
-   let imageView = UIImageView(image:UIImage(named:"timg-1.jpeg"))
+
 
     
     
