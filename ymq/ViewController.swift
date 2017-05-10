@@ -107,11 +107,25 @@ UINavigationControllerDelegate{
         
         a.text = "\(x)"
         faqiu.text = "A选手发球"
+       
+            
+        
         if x >= 21
         {
-            jieguo.text = "此局A选手胜"
-            t = t + 1
-            score1.text = "\(t)"
+            if z == 20,x - z == 2{
+               jieguo.text = "此局A选手胜"
+                t = t + 1
+                score1.text = "\(t)"
+            }else if z <= 19{
+                jieguo.text = "此局A选手胜"
+                t = t + 1
+                score1.text = "\(t)"
+            }
+            if z == 29, x == 30{
+                jieguo.text = "此局A选手胜"
+                t = t + 1
+                score1.text = "\(t)"
+            }
         }
         if t == 2{
             jieguo.text = "A选手胜出"
@@ -123,10 +137,7 @@ UINavigationControllerDelegate{
             t = 0
             r = 0
         }
-        if t == 1 , x == 11
-        {
-            
-        }
+        
     }
     
     @IBOutlet weak var player2: UIImageView!
@@ -136,12 +147,22 @@ UINavigationControllerDelegate{
     @IBAction func jiab(_ sender: UIButton) {
         z = z + 1
         b.text = "\(z)"
-         faqiu.text = "B选手发球"
         if z >= 21
         {
-            jieguo.text = "此局B选手胜"
-            r = r + 1
-            score2.text="\(r)"
+            if x == 20,z - x == 2{
+                jieguo.text = "此局B选手胜"
+                r = r + 1
+                score1.text = "\(r)"
+            }else if x <= 19{
+                jieguo.text = "此局B选手胜"
+                r = r + 1
+                score1.text = "\(r)"
+            }
+            if x == 29, z == 30{
+                jieguo.text = "此局B选手胜"
+                r = r + 1
+                score1.text = "\(r)"
+            }
         }
         if r == 2{
            jieguo.text = "B选手胜出"
