@@ -14,7 +14,12 @@ var t = 0
 var r = 0
 var a : Int = 0
 var b : Int = 0
-class ViewController: UIViewController {
+var dlg = 0
+var flagA = 0
+var flagB = 0
+class ViewController: UIViewController,UIImagePickerControllerDelegate,
+UINavigationControllerDelegate{
+    
     @IBOutlet weak var score2: UITextField!
 
 
@@ -38,8 +43,64 @@ class ViewController: UIViewController {
         }
     }
  
-  
+    @IBOutlet weak var Aimg: UIImageView!
 
+    @IBOutlet weak var Bimg: UIImageView!
+
+    @IBAction func Aput(_ sender: Any) {
+        if dlg == 0{
+        flagA = 1
+        flagB = 0
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary)
+        {
+            let picker = UIImagePickerController()
+            picker.delegate = self
+            picker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+            self.present(picker,animated: true,completion: {
+                ()->Void in
+            })
+        }else{
+            print("读取相册错误")
+            }
+    }
+    }
+    
+    @IBAction func Bput(_ sender: Any) {
+        if dlg == 0{
+            flagB = 1
+            flagA = 0
+            
+            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary)
+            {
+                let picker = UIImagePickerController()
+                picker.delegate = self
+                picker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+                self.present(picker,animated: true,completion: {
+                    ()->Void in
+                })
+            }else{
+                print("读取相册错误")
+            }
+        }
+
+    }
+    func imagePickerController(_ picker : UIImagePickerController,
+                            didFinishPickingMediaWithInfo
+        info:[String:Any]){
+        print(info)
+        let image : UIImage!
+        image = info[UIImagePickerControllerOriginalImage]as!UIImage
+        if(flagA == 1){
+            Aimg.image = image
+        }
+        else if(flagB == 1){
+            Bimg.image = image
+        }
+        picker.dismiss(animated:true,completion: {
+            ()-> Void in
+        })
+    
+    }
 
     @IBAction func jiaa(_ sender: UIButton) {
         x = x + 1
@@ -62,7 +123,10 @@ class ViewController: UIViewController {
             t = 0
             r = 0
         }
-
+        if t == 1 , x == 11
+        {
+            
+        }
     }
     
     @IBOutlet weak var player2: UIImageView!
@@ -92,8 +156,6 @@ class ViewController: UIViewController {
            }
 
 
-
-    
     
     
     override func viewDidLoad() {
