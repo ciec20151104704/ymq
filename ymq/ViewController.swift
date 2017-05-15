@@ -96,6 +96,7 @@ UINavigationControllerDelegate{
         else if(flagB == 1){
             Bimg.image = image
         }
+        
         picker.dismiss(animated:true,completion: {
             ()-> Void in
         })
@@ -107,6 +108,17 @@ UINavigationControllerDelegate{
         
         a.text = "\(x)"
         faqiu.text = "A选手发球"
+        if x % 2 == 0 {
+            faqiu4.text = ""
+            faqiu1.text = "F"
+            faqiu2.text = ""
+            faqiu3.text = ""
+        }else{
+            faqiu3.text = ""
+            faqiu1.text = ""
+            faqiu2.text = "F"
+            faqiu4.text = ""
+        }
        
             
         
@@ -139,7 +151,13 @@ UINavigationControllerDelegate{
         }
         
     }
+
+    @IBOutlet weak var faqiu4: UITextField!
+    @IBOutlet weak var faqiu3: UITextField!
     
+    @IBOutlet weak var faqiu2: UITextField!
+
+    @IBOutlet weak var faqiu1: UITextField!
     @IBOutlet weak var player2: UIImageView!
     
     @IBOutlet weak var faqiu: UITextField!
@@ -147,7 +165,20 @@ UINavigationControllerDelegate{
     @IBAction func jiab(_ sender: UIButton) {
         z = z + 1
         b.text = "\(z)"
+        if z % 2 == 0 {
+            faqiu4.text = "F"
+            faqiu1.text = ""
+            faqiu2.text = ""
+            faqiu3.text = ""
+        }else{
+            faqiu3.text = "F"
+            faqiu1.text = ""
+            faqiu2.text = ""
+            faqiu4.text = ""
+        }
+        
         if z >= 21
+    
         {
             if x == 20,z - x == 2{
                 jieguo.text = "此局B选手胜"
