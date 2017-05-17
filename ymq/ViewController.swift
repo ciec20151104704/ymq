@@ -17,29 +17,55 @@ var b : Int = 0
 var dlg = 0
 var flagA = 0
 var flagB = 0
+var q = 0
+var w = 0
+
+
 class ViewController: UIViewController,UIImagePickerControllerDelegate,
 UINavigationControllerDelegate{
     
     @IBOutlet weak var score2: UITextField!
 
 
-    @IBOutlet weak var a: UITextField!
-    @IBOutlet weak var score1: UITextField!
-    @IBOutlet weak var b: UITextField!
     
-    @IBOutlet weak var jieguo: UITextField!
-    @IBOutlet weak var jushu: UITextField!
-    @IBAction func restart(_ sender: UIButton) {
+    @IBAction func finish(_ sender: UIButton) {
+       z = 0
+         x = 0
+         i = 0
+         t = 0
+        ascore.text = ""
+        bscore.text = ""
+         dlg = 0
+         flagA = 0
+         flagB = 0
+        score1.text = ""
+        score2.text = ""
+        firemsg.text = ""
+        result.text = ""
+        gamenum.text = ""
+        q = 0
+        w = 0
+        
+    }
+    @IBOutlet weak var score1: UITextField!
+   
+    
+    @IBOutlet weak var bscore: UITextField!
+    
+    @IBOutlet weak var ascore: UITextField!
+    @IBOutlet weak var gamenum: UITextField!
+    @IBOutlet weak var result: UITextField!
+        @IBAction func restart(_ sender: UIButton) {
         z = 0
         x = 0
-        a.text = "\(0)"
-        b.text = "\(0)"
+        ascore.text = "\(0)"
+        bscore.text = "\(0)"
         i = i+1
-        jushu.text = "第\(i)局"
-        faqiu.text = ""
-        jieguo.text = ""
+        gamenum.text = "第\(i)局"
+        firemsg.text = ""
+        result.text = ""
         if(i>=4){
-            jushu.text="结束"
+            gamenum.text="结束"
         }
     }
  
@@ -103,111 +129,127 @@ UINavigationControllerDelegate{
     
     }
 
-    @IBAction func jiaa(_ sender: UIButton) {
+    @IBAction func addA(_ sender: UIButton) {
+        q = x
         x = x + 1
         
-        a.text = "\(x)"
-        faqiu.text = "A选手发球"
-        if x % 2 == 0 {
-            faqiu4.text = ""
-            faqiu1.text = "F"
-            faqiu2.text = ""
-            faqiu3.text = ""
-        }else{
-            faqiu3.text = ""
-            faqiu1.text = ""
-            faqiu2.text = "F"
-            faqiu4.text = ""
-        }
+        ascore.text = "\(x)"
+        firemsg.text = "A选手发球"
+        
+         if x % 2 == 0 {
+         fire4.text = ""
+         fire3.text = ""
+         fire1.text = "F"
+         fire2.text = ""
+         }else{
+         fire3.text = ""
+         fire1.text = ""
+         fire2.text = "F"
+         fire4.text = ""
+         }
        
-            
         
         if x >= 21
         {
             if z == 20,x - z == 2{
-               jieguo.text = "此局A选手胜"
+                result.text = "此局A选手胜"
                 t = t + 1
                 score1.text = "\(t)"
             }else if z <= 19{
-                jieguo.text = "此局A选手胜"
+                result.text = "此局A选手胜"
                 t = t + 1
                 score1.text = "\(t)"
             }
             if z == 29, x == 30{
-                jieguo.text = "此局A选手胜"
+                result.text = "此局A选手胜"
                 t = t + 1
                 score1.text = "\(t)"
             }
         }
         if t == 2{
-            jieguo.text = "A选手胜出"
+            result.text = "A选手胜出"
             z = 0
             x = 0
-            a.text = "\(0)"
-            b.text = "\(0)"
+            ascore.text = "\(0)"
+            bscore.text = "\(0)"
             i = 0
             t = 0
             r = 0
         }
-        
+
     }
-
-    @IBOutlet weak var faqiu4: UITextField!
-    @IBOutlet weak var faqiu3: UITextField!
     
-    @IBOutlet weak var faqiu2: UITextField!
-
-    @IBOutlet weak var faqiu1: UITextField!
-    @IBOutlet weak var player2: UIImageView!
+    @IBOutlet weak var firemsg: UITextField!
     
-    @IBOutlet weak var faqiu: UITextField!
+    @IBOutlet weak var fire1: UITextField!
+   
+    @IBOutlet weak var fire2: UITextField!
     
-    @IBAction func jiab(_ sender: UIButton) {
+    @IBOutlet weak var fire3: UITextField!
+    
+    @IBOutlet weak var fire4: UITextField!
+    @IBAction func addB(_ sender: UIButton) {
+        w = z
         z = z + 1
-        b.text = "\(z)"
-        if z % 2 == 0 {
-            faqiu4.text = "F"
-            faqiu1.text = ""
-            faqiu2.text = ""
-            faqiu3.text = ""
-        }else{
-            faqiu3.text = "F"
-            faqiu1.text = ""
-            faqiu2.text = ""
-            faqiu4.text = ""
-        }
+        bscore.text = "\(z)"
+        firemsg.text = "B选手发球"
+         if z % 2 == 0 {
+         fire4.text = "F"
+         fire3.text = ""
+         fire1.text = ""
+         fire2.text = ""
+         }else{
+         fire3.text = "F"
+         fire1.text = ""
+         fire2.text = ""
+         fire4.text = ""
+         }
+
         
         if z >= 21
-    
+            
         {
             if x == 20,z - x == 2{
-                jieguo.text = "此局B选手胜"
+                result.text = "此局B选手胜"
                 r = r + 1
                 score1.text = "\(r)"
             }else if x <= 19{
-                jieguo.text = "此局B选手胜"
+                result.text = "此局B选手胜"
                 r = r + 1
                 score1.text = "\(r)"
             }
             if x == 29, z == 30{
-                jieguo.text = "此局B选手胜"
+                result.text = "此局B选手胜"
                 r = r + 1
                 score1.text = "\(r)"
             }
         }
         if r == 2{
-           jieguo.text = "B选手胜出"
+            result.text = "B选手胜出"
             z = 0
             x = 0
-            a.text = "\(0)"
-            b.text = "\(0)"
+            ascore.text = "\(0)"
+            bscore.text = "\(0)"
             i = 0
             t = 0
             r = 0
         }
-           }
 
-
+    }
+    
+    @IBAction func backA(_ sender: UIButton) {
+        if x > q {
+            ascore.text = "\(q)"
+            x = q
+            
+        }
+    }
+    @IBAction func backB(_ sender: UIButton) {
+        if z > w{
+            bscore.text = "\(w)"
+            z = w
+        }
+    }
     
     
     override func viewDidLoad() {
